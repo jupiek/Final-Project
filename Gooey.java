@@ -34,8 +34,14 @@ public class Gui extends JFrame implements ActionListener{
 	}
 
 	public void actionPerformed(ActionEvent event){
-		button[x][y].setText("Clicked!");
+		for( int x = 0; x < array.length; x ++ ) {
+			for( int y = 0; y < array.length; y ++ ) {
+				if( even.getSounrce().equals( button[x][y] )
+					button[x][y].setText( "Clicked!" );	
+			}
+		}
 	}
+	
 	public static void main(String[] args){
 		Gui gui=new Gui();
 		gui.go();
