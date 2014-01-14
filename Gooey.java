@@ -1,22 +1,43 @@
 import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
 
-public class Gooey extends JFrame {
+public class Gui extends JFrame implements ActionListener{
 
-    public Gooey() {
-	setDefaultCloseOperation( EXIT_ON_CLOSE );
-	setSize( 800, 800 );
-	setTitle( "Battleship" );
-	setVisible( true );
-    }
+	
+	JButton[][] button=new JButton[5][5];
+	GridLayout grid= new GridLayout(5, 5);
+	public int x;
+	public int y;
 
-    public static void main( String[] args ) {
+	public void go(){
+		JFrame frame=new JFrame();
+		JPanel panel = new JPanel();
 
-	Gooey Battleship = new Gooey();
-	JPanel panel = new JPanel();
-	JButton button = new JButton( "Click" );
-	panel.add( button );
-	Battleship.add(panel);
+		panel.setLayout(grid);
+		panel.setSize(800, 800);
+		frame.add(panel);
 
-    }
-    
+		int[][] array= new int[5][5];
+		for (x =0; x<array.length; x++){
+			for (y =0; y<array[0].length; y++) {
+				button[x][y]=new JButton("Button");
+				button[x][y].addActionListener(this);
+				panel.add(button[x][y]);
+
+			}
+		}
+
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setSize(800, 800);
+		frame.setVisible(true);
+	}
+
+	public void actionPerformed(ActionEvent event){
+		button[x][y].setText("Clicked!");
+	}
+	public static void main(String[] args){
+		Gui gui=new Gui();
+		gui.go();
+	}
 }
