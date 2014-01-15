@@ -2,6 +2,7 @@
 //Cardy Wei, Julie Kim
 //Pd 8
 //Final Project
+//Battleship with GUI
 
 import javax.swing.*;
 import java.awt.event.*;
