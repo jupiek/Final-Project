@@ -491,8 +491,8 @@ public class Battleship2 extends JFrame implements ActionListener{
 	JFrame box=new JFrame();
 	JOptionPane.showMessageDialog(box, "This is the Battleship board game. Choose the size of your board and destroy the enemy. Good Luck Commander! Press Ok to Continue.");
 	x = Integer.parseInt(JOptionPane.showInputDialog("Please input the board size."));
-	while (x<15 || x>26){
-	    JOptionPane.showMessageDialog(box, "Please input a size between 15 and 26.");
+	while (x<10 || x>26){
+	    JOptionPane.showMessageDialog(box, "Please input a size between 10 and 26.");
 	    x = Integer.parseInt(JOptionPane.showInputDialog("Please input the board size."));
 	}
 	int[][] board=new int [x][x];
