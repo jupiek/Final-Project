@@ -88,18 +88,6 @@ public class Battleship3 extends JFrame implements ActionListener{
 	frame.setVisible(true);
     }
 
-    public int carrier(){return carriersize;}
-    public int cruiser(){return cruisersize;}
-    public int destroyer(){return destroyersize;}
-    public int submarine(){return submarinesize;}
-    public int patrol(){return patrolsize;}
-
-    public int carrierNo(){return carrier;}
-    public int cruiserNo(){return cruiser;}
-    public int destroyerNo(){return destroyer;}
-    public int submarineNo(){return submarine;}
-    public int patrolNo(){return patrol;}
-
     public void buildship(int shipsize, int ship){
 	int direction=(int)(2*Math.random());
 		
@@ -178,6 +166,7 @@ public class Battleship3 extends JFrame implements ActionListener{
 			if (totalships==0){
 			    JFrame box=new JFrame();
 			    JOptionPane.showMessageDialog(box, "You win! You destroyed all enemy ships in "+attempts+" attempts.");
+			    System.exit(0);
 			}
 		    }
 		    else if (finalBoard[x][y]==6){
@@ -194,6 +183,7 @@ public class Battleship3 extends JFrame implements ActionListener{
 			if (totalships==0){
 			    JFrame box=new JFrame();
 			    JOptionPane.showMessageDialog(box, "You win! You destroyed all enemy ships in "+attempts+" attempts.");
+			    System.exit(0);
 			}
 		    }
 		    else if (finalBoard[x][y]==4){
@@ -210,6 +200,7 @@ public class Battleship3 extends JFrame implements ActionListener{
 			if (totalships==0){
 			    JFrame box=new JFrame();
 			    JOptionPane.showMessageDialog(box, "You win! You destroyed all enemy ships in "+attempts+" attempts.");
+			    System.exit(0);
 			}
 		    }
 		    else if (finalBoard[x][y]==3){
@@ -226,6 +217,7 @@ public class Battleship3 extends JFrame implements ActionListener{
 			if (totalships==0){
 			    JFrame box=new JFrame();
 			    JOptionPane.showMessageDialog(box, "You win! You destroyed all enemy ships in "+attempts+" attempts.");
+			    System.exit(0);
 			}
 		    }
 		    else if (finalBoard[x][y]==2){
@@ -242,6 +234,7 @@ public class Battleship3 extends JFrame implements ActionListener{
 			if (totalships==0){
 			    JFrame box=new JFrame();
 			    JOptionPane.showMessageDialog(box, "You win! You destroyed all enemy ships in "+attempts+" attempts.");
+			    System.exit(0);
 			}
 		    }
 		    else if(finalBoard[x][y]==-2){
@@ -260,24 +253,27 @@ public class Battleship3 extends JFrame implements ActionListener{
 	}	
     }
 
-    public static void main(String[] args) {
+    public void play(){
 	int x;
-	Battleship3 newgame= new Battleship3();
 	JFrame box=new JFrame();
 	JOptionPane.showMessageDialog(box, "This is the Battleship board game. Choose the size of your board and destroy the enemy. Good Luck Commander! Press Ok to Continue.");
 	x = Integer.parseInt(JOptionPane.showInputDialog("Please input the board size."));
-	while (x<7 || x>26){
+	while (x<10 || x>26){
 	    JOptionPane.showMessageDialog(box, "Please input a size between 10 and 26.");
 	    x = Integer.parseInt(JOptionPane.showInputDialog("Please input the board size."));
 	}
 	int[][] board=new int [x][x];
 
-	newgame.createBoard(board);
-	newgame.buildship(newgame.carrier(), newgame.carrierNo());
-	newgame.buildship(newgame.cruiser(), newgame.cruiserNo());
-	newgame.buildship(newgame.destroyer(), newgame.destroyerNo());
-	newgame.buildship(newgame.submarine(), newgame.submarineNo());
-	newgame.buildship(newgame.patrol(), newgame.patrolNo());
-	newgame.playField(board);
+	createBoard(board);
+	buildship(carriersize, carrier);
+	buildship(cruisersize, cruiser);
+	buildship(destroyersize, destroyer);
+	buildship(submarinesize, submarine);
+	buildship(patrolsize, patrol);
+	playField(board);
+    }
+    public static void main(String[] args) {
+	Battleship3 newgame= new Battleship3();
+	newgame.play();
     }
 }
